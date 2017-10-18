@@ -95,6 +95,11 @@ class Cart extends Model {
 
 	}
 
+	public static function removeToSession()
+	{
+	   $_SESSION[Cart::SESSION] = NULL;
+	}
+
 	public function save()
 	{
 
@@ -205,6 +210,7 @@ class Cart extends Model {
 
 			if ($totals['vlheight'] < 2) $totals['vlheight'] = 2;
 			if ($totals['vllength'] < 16) $totals['vllength'] = 16;
+			if ($totals['vlwidth'] < 11) $totals['vlwidth'] = 11;
 
 			$qs = http_build_query([
 				'nCdEmpresa'=>'',

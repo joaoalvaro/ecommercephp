@@ -351,12 +351,14 @@ $app->post("/login", function(){
 });
 
 $app->get("/logout", function(){
+   User::logout();
 
-	User::logout();
+   Cart::removeToSession();
+   
+   session_regenerate_id();
 
-	header("Location: /login");
-	exit;
-
+   header("Location: /login");
+   exit;
 });
 
 $app->post("/register", function(){
